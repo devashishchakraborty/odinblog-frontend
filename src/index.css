@@ -1,0 +1,10 @@
+html,
+body,
+#root {
+  height: 100%;
+}
+
+.container > header, 
+.container > main {
+  padding: var(--pico-block-spacing-vertical) 0;
+}

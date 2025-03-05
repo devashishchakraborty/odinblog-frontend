@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import "../styles/PostList.css";
+import { clipText } from "../utils";
 
 const PostList = () => {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState(null);
   const [error, setError] = useState(null);
   useEffect(() => {
     const fetchPosts = async () => {
@@ -32,16 +35,21 @@ const PostList = () => {
   return (
     <>
       <section>
-        <ul>
-          {posts.map((post) => {
-            return (
-              <li key={post.id}>
-                <div>{post.title}</div>
-                <div>{post.content}</div>
-              </li>
-            );
-          })}
-        </ul>
+        <h2>Latest Posts</h2>
+        {posts ? (
+          posts.map((post) => (
+            <Link to={`/posts/${post.id}`}>
+              <article key={post.id}>
+                <header>
+                  <b>{post.title}</b>
+                </header>
+                <p>{clipText(post.content)}</p>
+              </article>
+            </Link>
+          ))
+        ) : (
+          <div aria-busy="true"></div>
+        )}
       </section>
     </>
   );
