@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Markdown from "react-markdown";
+import { formatTimestamp } from "../utils";
+import "../styles/Post.css";
+import Comments from "./Comments";
 
 const Post = () => {
   const { postId } = useParams();
   const [post, setPost] = useState(null);
   const [error, setError] = useState(null);
+
   useEffect(() => {
     const fetchPost = async () => {
       const TOKEN = import.meta.env.VITE_BEARER_TOKEN;
@@ -35,10 +40,21 @@ const Post = () => {
   return (
     <>
       {post ? (
-        <section>
-          <h2>{post.title}</h2>
-          <p>{post.content}</p>
-        </section>
+        <>
+          <section className="container">
+            <h2>{post.title}</h2>
+            <div className="postMeta">
+              <span>Garuda</span> &#8226;{" "}
+              <span>{formatTimestamp(post.created_at)}</span>
+            </div>
+            <hr />
+            <Markdown>{post.content}</Markdown>
+          </section>
+          <hr />
+          <section className="container commentSection">
+            <Comments post={post} postId={postId}/>
+          </section>
+        </>
       ) : (
         <div aria-busy="true"></div>
       )}

@@ -1,12 +1,13 @@
-
-
 /* Header */
-header {
-  display: flex;
-  gap: 16px;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--pico-muted-border-color);
+#root > header {
+  padding: 0.5em 0;
+  border-bottom: 2px solid var(--pico-muted-border-color);
+  .container {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .mainLogo {

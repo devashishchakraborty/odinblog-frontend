@@ -4,7 +4,6 @@ body,
   height: 100%;
 }
 
-.container > header, 
-.container > main {
-  padding: var(--pico-block-spacing-vertical) 0;
+#root > main {
+  padding: 1em 0;
 }

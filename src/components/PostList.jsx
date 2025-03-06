@@ -34,22 +34,31 @@ const PostList = () => {
   if (error) return <section>{error}</section>;
   return (
     <>
-      <section>
+      <section className="container">
         <h2>Latest Posts</h2>
-        {posts ? (
-          posts.map((post) => (
-            <Link to={`/posts/${post.id}`}>
-              <article key={post.id}>
-                <header>
-                  <b>{post.title}</b>
-                </header>
-                <p>{clipText(post.content)}</p>
-              </article>
-            </Link>
-          ))
-        ) : (
-          <div aria-busy="true"></div>
-        )}
+
+        {
+          // If posts array exists and has length > 0 then display the posts
+          posts ? (
+            posts.length > 0 && (
+              <div className="posts">
+                {posts.map((post) => (
+                  <Link to={`/posts/${post.id}`}>
+                    <article key={post.id}>
+                      <header>
+                        <b>{post.title}</b>
+                      </header>
+                      <p>{clipText(post.content)}</p>
+                    </article>
+                  </Link>
+                ))}
+              </div>
+            )
+          ) : (
+            // Else Show loading animation
+            <div aria-busy="true"></div>
+          )
+        }
       </section>
     </>
   );

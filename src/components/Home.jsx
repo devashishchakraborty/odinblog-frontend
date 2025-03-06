@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <>
-      <section>
+      <section className="container">
         <h2>Welcome to the OdinBlog Website!</h2>
         <p>
           Your go-to destination for insightful articles, expert opinions, and

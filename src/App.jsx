@@ -8,7 +8,7 @@ import "./App.css";
 
 function App() {
   return (
-    <div className="container">
+    <>
       <Header />
       <main>
         <Routes>
@@ -19,7 +19,7 @@ function App() {
         </Routes>
       </main>
       <footer></footer>
-    </div>
+    </>
   );
 }
 

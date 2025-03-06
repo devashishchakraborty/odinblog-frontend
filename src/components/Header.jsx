@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <header>
+      <div className="container">
       <Link to="/" className="mainLogo">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -27,6 +28,8 @@ const Header = () => {
           </li>
         </ul>
       </nav>
+
+      </div>
     </header>
   );
 };
