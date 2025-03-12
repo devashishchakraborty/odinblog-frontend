@@ -49,3 +49,7 @@ This repository contains the frontend application for the Blog project, allowing
 
    The application will be accessible at `http://localhost:5173`.
 
+## Screenshots
+![image](https://github.com/user-attachments/assets/97aebfe1-f7dd-4812-ad16-26d9e34eb02e)
+![image](https://github.com/user-attachments/assets/bbd13e01-9ccb-4b23-90fa-5dedf990708d)
+![image](https://github.com/user-attachments/assets/d3ba0df0-5e31-40d5-9ca4-349cf3d118ee)

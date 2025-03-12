@@ -11,7 +11,7 @@ export default function MainLogo(props) {
     >
       <path
         fill="currentColor"
-        d="M13 3v6h8V3m-8 18h8V11h-8M3 21h8v-6H3m0-2h8V3H3z"
+        d="M3 3v18h18V3zm15 15H6v-1h12zm0-2H6v-1h12zm0-4H6V6h12z"
       />
     </svg>
   );
