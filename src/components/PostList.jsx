@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/PostList.css";
 import { clipText } from "../utils";
+import remarkGfm from "remark-gfm";
+import rehypeSanitize from "rehype-sanitize";
+import Markdown from "react-markdown";
 
 const PostList = () => {
   const [posts, setPosts] = useState(null);
@@ -40,18 +43,28 @@ const PostList = () => {
         {
           // If posts array exists and has length > 0 then display the posts
           posts ? (
-            posts.length > 0 && (
+            posts.length > 0 ? (
               <div className="posts">
                 {posts.map((post) => (
-                  <Link to={`/posts/${post.id}`}>
-                    <article key={post.id}>
+                  <Link to={`/posts/${post.id}`} key={post.id} className="post">
+                    <article>
                       <header>
-                        <b>{post.title}</b>
+                        <b style={{fontSize: "1.1em"}}>{post.title}</b>
                       </header>
-                      <p>{clipText(post.content)}</p>
+                      <Markdown
+                        remarkPlugins={[remarkGfm]}
+                        rehypePlugins={[rehypeSanitize]}
+                      >
+                        {clipText(post.content)}
+                      </Markdown>
                     </article>
                   </Link>
                 ))}
+              </div>
+            ) : (
+              <div>
+                It's empty in here. Create a{" "}
+                <Link to="/posts/new">new post</Link>!
               </div>
             )
           ) : (

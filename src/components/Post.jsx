@@ -4,6 +4,8 @@ import Markdown from "react-markdown";
 import { formatTimestamp } from "../utils";
 import "../styles/Post.css";
 import Comments from "./Comments";
+import remarkGfm from "remark-gfm";
+import rehypeSanitize from "rehype-sanitize";
 
 const Post = () => {
   const { postId } = useParams();
@@ -41,20 +43,26 @@ const Post = () => {
     <>
       {post ? (
         <>
-          <section className="container">
-            <h2>{post.title}</h2>
-            <div className="postMeta">
-              <span>Garuda</span> &#8226;{" "}
-              <span>{formatTimestamp(post.created_at)}</span>
-            </div>
-            <hr />
-            <Markdown>{post.content}</Markdown>
-          </section>
+        <section className="postContainer container">
+          <h1>{post.title}</h1>
+          <div className="postMeta">
+            <span>{post.author.name}</span> &#8226;{" "}
+            <span>{formatTimestamp(post.created_at)}</span>
+          </div>
           <hr />
-          <section className="container commentSection">
-            <Comments post={post} postId={postId}/>
-          </section>
-        </>
+          <Markdown
+            remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeSanitize]}
+          >
+            {post.content}
+          </Markdown>
+        </section>
+        <hr />
+        <section className="commentSection  container">
+          <Comments post={post} postId={postId} />
+        </section>
+      </>
+
       ) : (
         <div aria-busy="true"></div>
       )}

@@ -1,6 +1,13 @@
-main a{
+.posts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 24px;
+}
+
+main a {
   text-decoration: none;
+  color: inherit;
   article * {
-    color: black;
+    color: inherit;
   }
 }
