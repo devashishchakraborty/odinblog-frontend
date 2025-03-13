@@ -16,7 +16,7 @@ const Post = () => {
     const fetchPost = async () => {
       const TOKEN = import.meta.env.VITE_BEARER_TOKEN;
       try {
-        const response = await fetch(`http://localhost:3000/posts/${postId}`, {
+        const response = await fetch(`http://localhost:3000/posts/published/${postId}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
