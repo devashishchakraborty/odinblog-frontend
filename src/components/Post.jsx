@@ -16,7 +16,7 @@ const Post = () => {
     const fetchPost = async () => {
       const TOKEN = import.meta.env.VITE_BEARER_TOKEN;
       try {
-        const response = await fetch(`http://localhost:3000/posts/published/${postId}`, {
+        const response = await fetch(`http://blog-api-qyys.onrender.com/posts/published/${postId}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
