@@ -16,7 +16,7 @@ const Comments = ({ post, postId }) => {
     const TOKEN = import.meta.env.VITE_BEARER_TOKEN;
     try {
       const response = await fetch(
-        `http://blog-api-qyys.onrender.com/posts/${postId}/comments`,
+        `https://blog-api-qyys.onrender.com/posts/${postId}/comments`,
         {
           method: "POST",
           headers: {
